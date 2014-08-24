@@ -6,19 +6,16 @@ var stringifyJSON = function(obj) {
   // your code goes here
   var jsonElement = [];
   // if undefined return undefined
-  /*if(obj === undefined){
+  if(obj === undefined){
   	return 'undefined';
-  }*/
+  }
   //if null return 'null'
   if(obj === null){
   	return 'null';
   }
   // return the string version of number, boolean, string (primative data types).
   // Composite data types we will have to break down further --- see below.
-  if(typeof obj==='number'){
-  	return obj.toString();
-  };
-  if(typeof obj=== 'boolean'){
+  if(typeof obj==='number' || typeof obj==='boolean'){
   	return obj.toString();
   };
   if(typeof obj  === 'string'){
