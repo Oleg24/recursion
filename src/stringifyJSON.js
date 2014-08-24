@@ -17,21 +17,21 @@ var stringifyJSON = function(obj) {
   // Composite data types we will have to break down further --- see below.
   if(typeof obj==='number'){
   	return obj.toString();
-  }
+  };
   if(typeof obj=== 'boolean'){
   	return obj.toString();
-  }
+  };
   if(typeof obj  === 'string'){
   	return '"'+obj+'"';
-  }
+  };
   function isObjectEmpty(someObj){
   	var isEmpty = true;
-  	for(keys in someObj){
+  	for(var keys in someObj){
   		isEmpty = false;
   		break;
   	}
   	return isEmpty;
-  }
+  };
   /* if the obj is an array we will go through each item in the array and push the 
   result of running the stringifyJSON on each value -- this is the recursive part.  
   */
@@ -45,14 +45,17 @@ var stringifyJSON = function(obj) {
   if(typeof obj ==='object' && !Array.isArray(obj) && typeof obj !== null){
   	if(isObjectEmpty(obj)){
   		return '{}';
-  	};
+  	} else {
   	for(var key in obj){
+  		var value = obj[key];
   	  if(typeof value !== 'function' && typeof value !== 'undefined'){
   		var objResult = stringifyJSON(obj[key]);
   		jsonElement.push('"'+key+'"'+':'+objResult);
   	}
+  }
   	return '{'+jsonElement+'}';
-  };}
+  	};
+  };
 };
 
 
