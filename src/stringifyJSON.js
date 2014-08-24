@@ -38,8 +38,9 @@ var stringifyJSON = function(obj) {
   	}
   	return '['+jsonElement.join(',')+']';
   };
-  /* if the obj is an object we use similar logic */
+  // if the obj is an object we use similar logic.  
   if(typeof obj ==='object' && !Array.isArray(obj) && typeof obj !== null){
+  // empty object returns empty
   	if(isObjectEmpty(obj)){
   		return '{}';
   	} else {
@@ -54,14 +55,3 @@ var stringifyJSON = function(obj) {
   	};
   };
 };
-
-
-
-/*if(!obj.hasOwnProperty('key')){
-  			var newArr = [];
-  			return newArr;
-  		}*/
-
-/*if(obj.key.length===0){
-  		return '{}';
-  	} else{*/
