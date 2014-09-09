@@ -5,10 +5,6 @@
 var stringifyJSON = function(obj) {
   // your code goes here
   var jsonElement = [];
-  // if undefined return undefined
-  if(obj === undefined){
-  	return 'undefined';
-  }
   //if null return 'null'
   if(obj === null){
   	return 'null';
@@ -21,19 +17,11 @@ var stringifyJSON = function(obj) {
   if(typeof obj  === 'string'){
   	return '"'+obj+'"';
   };
-  function isObjectEmpty(someObj){
-  	var isEmpty = true;
-  	for(var keys in someObj){
-  		isEmpty = false;
-  		break;
-  	}
-  	return isEmpty;
-  };
   /* if the obj is an array we will go through each item in the array and push the 
   result of running the stringifyJSON on each value -- this is the recursive part.  
   */
   if(typeof obj==='object' && Array.isArray(obj)){
-  	for(var i=0; i<obj.length;i++){
+  	for(var i=0; i<obj.length; i++){
   		jsonElement.push(stringifyJSON(obj[i]));
   	}
   	return '['+jsonElement.join(',')+']';
@@ -41,7 +29,7 @@ var stringifyJSON = function(obj) {
   // if the obj is an object we use similar logic.  
   if(typeof obj ==='object' && !Array.isArray(obj) && typeof obj !== null){
   // empty object returns empty
-  	if(isObjectEmpty(obj)){
+  	if(obj === {} ){
   		return '{}';
   	} else {
   	for(var key in obj){
